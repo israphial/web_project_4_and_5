@@ -4,6 +4,7 @@
 
 * Introduction
 * Technologies
+* Links
 
 **Introduction**
 
@@ -24,6 +25,8 @@ Additionally, the version history of this project may be messy, as I am using th
 * Git/GitHub for version control
 * GitHub Pages for hosting
 
-[Link to the project spec sheet in Figma](https://www.figma.com/file/mUgu8OSHWE0M6p6vfwmdu9/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1) //
+**Links**
+
+[Link to the project spec sheet in Figma](https://www.figma.com/file/mUgu8OSHWE0M6p6vfwmdu9/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1) 
 
 [Link to the hosted site --currently unavailable](https://israphial.github.io/web_project_4/index.html?)
