@@ -1,0 +1,15 @@
+.header {
+    margin: 0 auto;
+    padding: 0;
+    margin-bottom: 36px;
+    display: flex;
+    width: calc(100% - (200px * 2));
+    border-bottom: 1px solid #545454;
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        width: 100%;
+        margin-bottom: 38px;
+    }
+}
