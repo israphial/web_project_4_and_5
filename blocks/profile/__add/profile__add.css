@@ -1,0 +1,15 @@
+.profile__add {
+    margin: 0;
+    padding: 0;
+    margin-left: 165px;
+    margin-top: 35px;
+    width: 150px;
+    height: 50px;
+    background-image: url(../../../images/Rectangle.png), url(../../../images/plus.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.profile__add:hover {
+    opacity: 0.6;
+}
