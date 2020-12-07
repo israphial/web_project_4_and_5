@@ -10,5 +10,11 @@
     margin: 0 auto;
     padding: 0;
     margin-bottom: 47px;
-    width: calc(100% - (200px * 2));
+    max-width: calc(100% - (200px * 2));
+}
+
+@media screen and (max-width: 768px) {
+    .profile {
+        max-width: calc(100% - (19px * 2));
+    }
 }
