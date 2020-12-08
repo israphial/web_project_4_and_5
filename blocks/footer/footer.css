@@ -1,0 +1,23 @@
+/* TODO: add responsiveness to match smaller resolution blocks in width */
+@import url(__copyright/footer__copyright.css);
+
+.footer {
+    display: block;
+    max-width: calc(100% - (200px * 2));
+    margin: 0 auto;
+    margin-bottom: 60px;
+    padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .footer {
+        max-width: calc(100% - (19px * 2));
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .footer {
+        margin-left: 19px;
+        margin-bottom: 36px;
+    }
+}
