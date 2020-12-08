@@ -9,5 +9,12 @@
     border-top-right-radius: 10px;
     margin: 0;
     padding: 0;
+    justify-self: center; /*centers card at all times regardless of its position normally*/
     max-width: 282px;
+}
+
+@media screen and (max-width: 450px) {
+    .card {
+        max-width: 380px;
+    }
 }
