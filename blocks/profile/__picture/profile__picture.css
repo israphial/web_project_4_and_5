@@ -2,6 +2,11 @@
     border-radius: 50%;
     overflow: hidden;
     width: 120px;
-    height: 120px; /*these might not be right, might need to be wider */
+    height: 120px;
     margin-right: 30px;
+}
+@media screen and (max-width: 620px) {
+    .profile__picture {
+        margin-right: 0;
+    }
 }

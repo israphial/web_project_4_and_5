@@ -1,15 +1,25 @@
 .profile__edit {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    margin-top: 37px;
+    margin-top: 16px;
     margin-left: 18px;
     width: 24px;
     height: 24px;
-    background-image: url(../../../images/rectangle-small.png), url(../../../images/edit.png);
+    border: 1px solid white;
+    background-image: url(../../../images/edit.png);
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .profile__edit:hover {
     opacity: 0.6;
+}
+
+@media screen and (max-width: 450px) {
+    .profile__edit {
+        margin-top: 0;
+        width: 18px;
+        height: 18px;
+    }
 }
