@@ -1,0 +1,18 @@
+.edit-form__input {
+    display: block;
+    border: none;
+    margin: 0 auto;
+    padding: 0;
+    padding-bottom: 8px;
+    margin-top: 30px;
+    border-bottom: 1px solid #000000;
+    min-width: calc(100% - (36px * 2));
+    font-size: 14px;
+    line-height: 17px;
+}
+
+@media screen and (max-width: 450px) {
+    .edit-form__input {
+        min-width: calc(100% - (22px * 2));
+    }
+}
