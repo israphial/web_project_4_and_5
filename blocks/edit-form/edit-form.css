@@ -1,10 +1,3 @@
-/* TODO :
-white window with all assoc elements
-form content
-form edits page content
-
-*/
-
 @import url(__close-button/edit-form__close-button.css);
 @import url(__save-button/edit-form__save-button.css);
 @import url(__header/edit-form__header.css);

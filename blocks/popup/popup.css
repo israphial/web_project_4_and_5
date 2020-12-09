@@ -1,7 +1,7 @@
 @import url(__background/popup__background.css);
 
 .popup {
-    display: none; /*make this flex on toggle*/
+    display: none; /*This is toggled to flex with JS*/
     justify-content: center;
     align-items: center;
     width: 100%;

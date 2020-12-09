@@ -1,4 +1,9 @@
+/*
+TODO:
+ - Heart symbol image toggle - if required?
+ - make the assignment of the form elements more efficient - if possible
 
+*/
 let editButton = document.querySelector('.profile__edit');
 let closeButton = document.querySelector('.edit-form__close-button')
 let popupWindow = document.querySelector('.popup');
