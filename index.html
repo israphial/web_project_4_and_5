@@ -21,31 +21,22 @@
     <div class="page__container">
 
         <header class="header">
-            <img src="images/logo.png" alt="logo" class="logo">
+            <img src="images/logo.svg" alt="logo" class="logo">
         </header>
 
-        <section class="profile">
-            <ul class="profile__container">
-                <li>
-                    <img src="images/cousteau.jpg" alt="Profile picture" class="profile__picture">
-                </li>
+        <main class="main">
 
-                <li>
-                    <ul class="profile__descriptors">
-                        <li>
-                            <ul class="profile__name-container">
-                                <li><h1 class="profile__header">Jacques Cousteau</h1></li>
-                                <li><div class="profile__edit"></div></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <p class="profile__description">Explorer</p>
-                        </li>
-                    </ul>
-                </li>
-                
-                <li><div class="profile__add"></div></li>
-            </ul>
+        <section class="profile">
+            <img src="images/cousteau.jpg" alt="Profile picture" class="profile__picture">
+            <div class="profile__descriptors">
+                <div class="profile__name-container">
+                    <h1 class="profile__header">Jacques Cousteau</h1>
+                    <button type="button" aria-label="Edit profile" class="profile__edit"></button>
+                </div>
+                <p class="profile__description">Explorer</p>
+            </div>
+            
+            <button class="profile__add" type="button" aria-label="Add card"></button>
         </section>
 
         <section class="cards">
@@ -54,66 +45,66 @@
                     <img src="./images/yosemite.png" alt="Yosemite" class="card__picture">
                     <div class="card__info">
                         <h2 class="card__name">Yosemite Valley</h2>
-                        <img src="./images/like-disabled.png" alt="Social symbol" class="card__social-symbol">
+                        <button type="button" class="card__social-symbol"aria-label="Love"></button>
                     </div>
                 </li>
                 <li class="card">
                     <img src="./images/lake-louise.png" alt="Lake Louise" class="card__picture">
                     <div class="card__info">
                         <h2 class="card__name">Lake Louise</h2>
-                        <img src="./images/like-disabled.png" alt="Social symbol" class="card__social-symbol">
+                        <button type="button" class="card__social-symbol"aria-label="Love"></button>
                     </div>
                 </li>
                 <li class="card">
                     <img src="./images/bald-mountains.png" alt="Bald Mountains" class="card__picture">
                     <div class="card__info">
                         <h2 class="card__name">Bald Mountains</h2>
-                        <img src="./images/like-disabled.png" alt="Social symbol" class="card__social-symbol">
+                        <button type="button" class="card__social-symbol"aria-label="Love"></button>
                     </div>
                 </li>
                 <li class="card">
                     <img src="./images/latemar.png" alt="Latemar" class="card__picture">
                     <div class="card__info">
                         <h2 class="card__name">Latemar</h2>
-                        <img src="./images/like-disabled.png" alt="Social symbol" class="card__social-symbol">
+                        <button type="button" class="card__social-symbol"aria-label="Love"></button>
                     </div>
                 </li>
                 <li class="card">
                     <img src="./images/vanoise.png" alt="Vanoise National Park" class="card__picture">
                     <div class="card__info">
                         <h2 class="card__name">Vanoise National Park</h2>
-                        <img src="./images/like-disabled.png" alt="Social symbol" class="card__social-symbol">
+                        <button type="button" class="card__social-symbol"aria-label="Love"></button>
                     </div>
                 </li>
                 <li class="card">
                     <img src="./images/lago-di-braies.png" alt="Lago di Braies" class="card__picture">
                     <div class="card__info">
                         <h2 class="card__name">Lago di Braies</h2>
-                        <img src="./images/like-disabled.png" alt="Social symbol" class="card__social-symbol">
+                        <button type="button" class="card__social-symbol"aria-label="Love"></button>
                     </div>
                 </li>
             </ul>
         </section>
 
+    </main>
+
         <footer class="footer">
             <p class="footer__copyright">&copy; 2020 by Luke Schmidt</p>
         </footer>
 
-        <section class="popup">
-            <div class="popup__background"></div>
+        <div class="popup">
             <div class="edit-form">
-                <img src="./images/close.png" alt="Close button" class="edit-form__close-button">
+                <button type="button" class="edit-form__close-button" aria-label="Close popup"></button>
                 <h2 class="edit-form__header">Edit profile</h2>
-                <form action="#" class="edit-form__form">
-                    <input type="text" class="edit-form__input edit-form__input_type_header" name="profileName" value="">
-                    <input type="text" class="edit-form__input edit-form__input_type_description" name="profileDescription" value="">
-                    <button class="edit-form__save-button">Save</button>
+                <form name="profile-form" action="#" class="edit-form__form">
+                    <input type="text" class="edit-form__input edit-form__input_type_header" name="profileName" value="" required>
+                    <input type="text" class="edit-form__input edit-form__input_type_description" name="profileDescription" value="" required>
+                    <button class="edit-form__save-button" type="submit" aria-label="Save changes">Save</button>
                 </form>
-
             </div>
-        </section>
+        </div>
 
     </div>
-<script src="script.js"></script>
+<script src="scripts/script.js"></script>
 </body>
 </html>

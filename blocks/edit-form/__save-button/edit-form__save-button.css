@@ -3,10 +3,14 @@
     margin: 0 auto;
     margin-top: 45px;
     padding: 15px;
+    margin-bottom: 36px;
     color: white;
     background-color: black;
     min-width: calc(100% - (36px * 2));
     border: none;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 22px;
 }
 
 .edit-form__save-button:hover {
@@ -16,5 +20,8 @@
 @media screen and (max-width: 450px) {
     .edit-form__save-button {
         min-width: calc(100% - (22px * 2));
+        font-size: 14px;
+        line-height: 17px;
+        margin-bottom: 25px;
     }
 }

@@ -3,6 +3,15 @@
     top: -50px;
     right: -50px;
     z-index: 3;
+    cursor: pointer;
+    background-image: url(../../../images/close.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    width: 40px;
+    height: 40px;
 }
 
 .edit-form__close-button:hover {
@@ -11,9 +20,9 @@
 
 @media screen and (max-width: 550px) {
     .edit-form__close-button {
-        width: 26px;
-        height: 26px;
-        top: -36px;
-        right: 0;
+        width: 22px;
+        height: 22px;
+        top: -55px;
+        right: 10px;
     }
 }

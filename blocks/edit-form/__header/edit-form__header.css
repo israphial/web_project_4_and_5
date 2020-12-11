@@ -7,6 +7,8 @@
 
 @media screen and (max-width: 450px) {
     .edit-form__header {
-        margin-left: 22px;
+        margin: 28px 0 65px 22px;
+        font-size: 18px;
+        line-height: 22px;
     }
 }
