@@ -19,18 +19,19 @@ function openPopup() {
     inputDescriptionContents.value = profileDescriptionContents.textContent;
 };
 
+function closePopup() {
+    popupWindow.classList.remove("popup_visible");
+};
+
 function closePopupSaved(e) {
     e.preventDefault();
 
     profileHeaderContents.textContent = inputHeaderContents.value;
     profileDescriptionContents.textContent = inputDescriptionContents.value;
-    popupWindow.classList.remove("popup_visible");
+    closePopup();
 };
 
-function closePopupUnsaved() {
-    popupWindow.classList.remove("popup_visible");
-};
 
 editButton.addEventListener("click", openPopup);
-closeButton.addEventListener("click", closePopupUnsaved);
+closeButton.addEventListener("click", closePopup);
 popupForm.addEventListener("submit", closePopupSaved);
