@@ -30,4 +30,4 @@ Additionally, the version history of this project may be messy, as I am using th
 
 * [Link to the checklist](https://code.s3.yandex.net/web-developer/checklists/checklist-4-en/index.html)
 
-* [--Link to the hosted site--](https://israphial.github.io/web_project_4/index.html?)
+* [--Link to the hosted site--](https://israphial.github.io/web_project_4_and_5/index.html)
