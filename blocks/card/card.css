@@ -11,6 +11,7 @@
     padding: 0;
     justify-self: center; /*centers card at all times regardless of its position normally*/
     max-width: 282px;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 450px) {

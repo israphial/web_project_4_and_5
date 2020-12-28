@@ -5,17 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Around the US</title>
     <link rel="stylesheet" href="./pages/index.css">
-    <!-- Reviewer:
-    I am not satisfied with the structure of profile as it is now, but I couldn't seem to find a better way to set things up.
-    The main issue I had with this is that, while the profile picture and plus button can be on opposite sides of the container 
-    using flex and justify-content: space-between;, the header, description, and edit button don't work well with that. Hence 
-    the weird extra ul, as I couldn't figure out how to do it in a more simple way. I would really appreciate any advice you have 
-    regarding how I could structure it better. 
-    Additionally, is something supposed to be done with the heart symbols in each card? The spec sheet has an "active" version for them 
-    but no actual information besides that. I'm assuming that means that they're supposed to be clickable and turn black when clicked, but 
-    there's nothing in the project description, checklist, or spec sheet that I could find to verify this. If this is the case, how would 
-    I go about selecting a heart with JS specifically and making it toggle its image without assigning each heart its own ID?
-    Thank you for your time! -->
 </head>
 <body class="page">
     <div class="page__container">
@@ -41,7 +30,16 @@
 
         <section class="cards">
             <ul class="cards__container">
-                <li class="card">
+                <template id="card-template">
+                    <li class="card">
+                        <img src="" alt="" class="card__picture">
+                        <div class="card__info">
+                            <h2 class="card__name"></h2>
+                            <button class="card__social-symbol" type="button" aria-label="Like"></button>
+                        </div>
+                    </li>
+                </template>
+                <!-- <li class="card">
                     <img src="./images/yosemite.png" alt="Yosemite" class="card__picture">
                     <div class="card__info">
                         <h2 class="card__name">Yosemite Valley</h2>
@@ -82,7 +80,7 @@
                         <h2 class="card__name">Lago di Braies</h2>
                         <button type="button" class="card__social-symbol"aria-label="Love"></button>
                     </div>
-                </li>
+                </li> -->
             </ul>
         </section>
 
