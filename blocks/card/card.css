@@ -2,9 +2,11 @@
 @import url(__info/card__info.css);
 @import url(__name/card__name.css);
 @import url(__social-symbol/card__social-symbol.css);
+@import url(__delete-button/card__delete-button.css);
 
 .card {
     display: block;
+    position: relative; /*allows delete button to be positioned correctly*/
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     margin: 0;
