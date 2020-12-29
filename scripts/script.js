@@ -159,8 +159,12 @@ function generateCards() {
     //grab all like buttons
     const likeCardButtons = document.querySelectorAll(".card__social-symbol");
 
-    // event listener ties behavior to each button that modifies its appearance when clicked - add a class to the button called "card__social-symbol_type_filled" or something
-    // 
+    // event listener ties behavior to each button that modifies its appearance when clicked - add a class to the button called "card__social-symbol_liked" or something
+    likeCardButtons.forEach( (likeButton) => {
+      likeButton.addEventListener("click", function (evt) {
+        evt.target.classList.toggle(".card__social-symbol_liked");
+      })
+    })
 }
 
 generateCards();
