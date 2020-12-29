@@ -162,7 +162,7 @@ function generateCards() {
     // event listener ties behavior to each button that modifies its appearance when clicked - add a class to the button called "card__social-symbol_liked" or something
     likeCardButtons.forEach( (likeButton) => {
       likeButton.addEventListener("click", function (evt) {
-        evt.target.classList.toggle(".card__social-symbol_liked");
+        evt.target.classList.toggle("card__social-symbol_liked");
       })
     })
 }
