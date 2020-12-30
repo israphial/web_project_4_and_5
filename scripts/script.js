@@ -34,17 +34,18 @@ const cardsInformationArray = [
 let cardContainer = document.querySelector(".cards__container"); //is used by functions to add cards to the DOM
 
 let editProfileButton = document.querySelector('.profile__edit');
-let addCardButton = document.querySelector(".profile__add")//
+let addCardButton = document.querySelector(".profile__add");
 
 let profileCloseButton = document.querySelector('.edit-form__close-button_type_profile');
 let addCardCloseButton = document.querySelector('.edit-form__close-button_type_add-card');
+let imageCloseButton = document.querySelector(".edit-form__close-button_type_image");
 
 let profileSaveButton = document.querySelector('.edit-form__save-button');
 let addCardSaveButton = document.querySelector('edit-form__save-button_type_add-card');
 
 let profilePopup = document.querySelector('.popup_type_profile'); // popup for profile
 let addCardPopup = document.querySelector(".popup_type_add-card"); // popup for add-card
-// let imagePopup = document.querySelector(".popup_type_image"); // popup for images
+let imagePopup = document.querySelector(".popup_type_image"); // popup for images
 
 let profilePopupForm = document.querySelector('.edit-form_type_profile');
 let addCardPopupForm = document.querySelector('.popup_type_add-card');
@@ -58,12 +59,23 @@ let profileDescriptionContents = document.querySelector('.profile__description')
 let inputHeaderContents = document.querySelector('.edit-form__input_type_header');
 let inputDescriptionContents = document.querySelector('.edit-form__input_type_description');
 
-function openPopup(popup) {
+// parts for image popup
+
+// image popup elements
+let imagePopupImage = document.querySelector('.popup__image');
+let imagePopupCaption = document.querySelector('.popup__image-caption');
+
+function openPopup(popup, imageSource=undefined) {
     popup.classList.add("popup_visible");
 
     if (popup == profilePopup) {
       inputHeaderContents.value = profileHeaderContents.textContent;
       inputDescriptionContents.value = profileDescriptionContents.textContent;
+    }
+
+    if (popup == imagePopup) {
+      // set the popup image source (the thing that should be occupying the content or background of the popup) to imageSource
+      imagePopupImage.src = imageSource;
     }
 };
 
@@ -142,7 +154,7 @@ function generateCards() {
 
         // append the new card to the container
         cardContainer.append(currentCard);
-    })
+    });
 
     // select all delete buttons and add an event listener to all of them
     const deleteCardButtons = document.querySelectorAll(".card__delete-button");
@@ -162,6 +174,17 @@ function generateCards() {
     likeCardButtons.forEach( (likeButton) => {
       likeButton.addEventListener("click", function (evt) {
         evt.target.classList.toggle("card__social-symbol_liked");
+      })
+    })
+
+    // image click handling
+    // select all images
+    const cardImages = document.querySelectorAll(".card__picture");
+    cardImages.forEach( (image) => {
+      image.addEventListener("click", function (evt) {
+        console.log(evt.target) // this should be the image; if it is then you need to make its src pass into openPopup with an argument that gets passed into the correct section
+        let thisImageSource = evt.target.getAttribute('src');
+        openPopup(imagePopup, thisImageSource);
       })
     })
 }
