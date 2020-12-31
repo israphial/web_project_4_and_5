@@ -17,7 +17,7 @@
 /* elements */
 @import url(../blocks/popup/_visible/popup_visible.css);
 @import url(../blocks/card/__social-symbol/_liked/card__social-symbol_liked.css);
-@import url(../blocks/edit-form/__close-button/_type/edit-form__close-button_type_image.css);
+@import url(../blocks/edit-form/__close/_type/edit-form__close_type_image.css);
 
 /* mixes */
 @import url(../blocks/faded-in/faded-in.css);

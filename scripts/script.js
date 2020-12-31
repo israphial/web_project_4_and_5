@@ -43,9 +43,9 @@ let cardContainer = document.querySelector(".cards__container"); //is used by fu
 let editProfileButton = document.querySelector('.profile__edit');
 let addCardButton = document.querySelector(".profile__add");
 
-let profileCloseButton = document.querySelector('.edit-form__close-button_type_profile');
-let addCardCloseButton = document.querySelector('.edit-form__close-button_type_add-card');
-let imageCloseButton = document.querySelector(".edit-form__close-button_type_image");
+let profileCloseButton = document.querySelector('.edit-form__close_type_profile');
+let addCardCloseButton = document.querySelector('.edit-form__close_type_add-card');
+let imageCloseButton = document.querySelector(".edit-form__close_type_image");
 
 let profileSaveButton = document.querySelector('.edit-form__save-button');
 let addCardSaveButton = document.querySelector('edit-form__save-button_type_add-card');
