@@ -1,6 +1,9 @@
 .popup__image-caption {
     margin: 0;
     padding: 0;
+    margin-top: 10px;
+    display: inline;
+    max-width: 800px; /*safeguards against freakishly large titles, if one somehow makes it into the information array*/
     color: white;
     font-size: 12px;
     line-height: 15px;

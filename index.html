@@ -29,7 +29,6 @@
 
         <section class="cards">
             <ul class="cards__container">
-                
             </ul>
         </section>
 
@@ -39,36 +38,40 @@
             <p class="footer__copyright">&copy; 2020 by Luke Schmidt</p>
         </footer>
 
-        <div class="popup popup_type_profile">
+        <div class="popup popup_type_profile faded-out">
             <div class="edit-form edit-form_type_profile">
                 <button type="button" class="edit-form__close-button edit-form__close-button_type_profile" aria-label="Close popup"></button>
                 <h2 class="edit-form__header edit-form__header_type_profile">Edit profile</h2>
                 <form name="profile-form" action="#" class="edit-form__form edit-form__form_type_profile">
-                    <input type="text" class="edit-form__input edit-form__input_type_header" name="profileName" value="" required>
-                    <input type="text" class="edit-form__input edit-form__input_type_description" name="profileDescription" value="" required>
+                    <input type="text" class="edit-form__input edit-form__input_type_header" name="profileName" value="" maxlength="250" required>
+                    <input type="text" class="edit-form__input edit-form__input_type_description" name="profileDescription" value="" maxlength="250" required>
                     <button class="edit-form__save-button edit-form__save-button_type_profile" type="submit" aria-label="Save changes">Save</button>
                 </form>
             </div>
         </div>
 
-        <div class="popup popup_type_add-card">
+        <div class="popup popup_type_add-card faded-out">
             <div class="edit-form edit-form_type_add-card">
                 <button type="button" class="edit-form__close-button edit-form__close-button_type_add-card" aria-label="Close popup"></button>
                 <h2 class="edit-form__header edit-form__header_type_add-card">New Place</h2>
                 <form name="add-card-form" action="#" class="edit-form__form edit-form__form_type_add-card">
-                    <input type="text" class="edit-form__input edit-form__input_type_title" name="cardTitle" value="" placeholder="Title" required>
+                    <input type="text" class="edit-form__input edit-form__input_type_title" name="cardTitle" value="" placeholder="Title" maxlength="50" required>
                     <input type="url" class="edit-form__input edit-form__input_type_url" name="cardURL" value="" placeholder="Image URL" required>
                     <button class="edit-form__save-button edit-form__save-button_type_add-card" type="submit" aria-label="Save card">Create</button>
                 </form>
             </div>
         </div>
 
-        <div class="popup popup_type_image">
-            <figure>
+        <!-- Reviewer: 
+            I'm having an issue with certain images that are really wide, such as the Yosemite picture, where it starts to stretch and distort
+            and I haven't found a good way to handle for such images. I've got things working for most other kinds of images but nothing I've tried 
+            has worked for that picture. I've spent about 2 hours on this alone with no good solutions, and I'd really appreciate any advice you have. -->
+        <div class="popup popup_type_image faded-out">
+            <figure class="image-popup-figure">
                 <img src="" alt="" class="popup__image">
                 <figcaption class="popup__image-caption"></figcaption>
+                <button type="button" class="edit-form__close-button edit-form__close-button_type_image" aria-label="Close popup"></button>
             </figure>
-            <button type="button" class="edit-form__close-button edit-form__close-button_type_image" aria-label="Close popup"></button>
         </div>
         
         <template id="card-template">
@@ -81,7 +84,9 @@
                 </div>
             </li>
         </template>
+        
     </div>
 <script src="scripts/script.js" crossorigin="anonymous"></script>
+<script src="scripts/mousetrap.js" defer></script>
 </body>
 </html>
