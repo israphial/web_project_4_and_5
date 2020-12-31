@@ -1,3 +1,4 @@
+/* blocks */
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts/fonts.css);
 @import url(../blocks/page/page.css);
@@ -8,5 +9,15 @@
 @import url(../blocks/cards/cards.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/image-popup-figure/image-popup-figure.css);
 @import url(../blocks/edit-form/edit-form.css);
+
+
+/* elements */
 @import url(../blocks/popup/_visible/popup_visible.css);
+@import url(../blocks/card/__social-symbol/_liked/card__social-symbol_liked.css);
+@import url(../blocks/edit-form/__close-button/_type/edit-form__close-button_type_image.css);
+
+/* mixes */
+@import url(../blocks/faded-in/faded-in.css);
+@import url(../blocks/faded-out/faded-out.css);

@@ -1,5 +1,5 @@
 .card__social-symbol {
-    width: 20px;
+    min-width: 20px;
     height: 18px;
     margin: 0;
     margin-right: 15px;

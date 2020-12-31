@@ -1,4 +1,9 @@
 .card__picture {
     display: block;
     margin: 0 auto;
+    /* placeholder values to standardize the images within the container */
+    width: 282px;
+    height: 282px;
+    object-fit: cover;
+    object-position: center;
 }
