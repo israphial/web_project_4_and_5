@@ -33,7 +33,7 @@ Project 5 expands on Project 4 by adding far more interactivity on the page. Car
 
 * [Link to the checklist](https://code.s3.yandex.net/web-developer/checklists/checklist-4-en/index.html)
 
-* [--Link to the hosted site--](https://israphial.github.io/web_project_4/index.html?)
+* [--Link to the hosted site--](https://israphial.github.io/web_project_4_and_5/index.html?)
 
 **NOTICE** 
 
