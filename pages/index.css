@@ -14,10 +14,13 @@
 @import url(../blocks/popup-container/popup-container.css);
 
 
-/* elements */
+/* modifiers */
 @import url(../blocks/popup/_visible/popup_visible.css);
 @import url(../blocks/card/__social-symbol/_liked/card__social-symbol_liked.css);
-@import url(../blocks/edit-form/__close/_type/edit-form__close_type_image.css);
+@import url(../blocks/popup/__close-button/_type/popup__close-button_type_profile.css);
+@import url(../blocks/popup/__close-button/_type/popup__close-button_type_add-card.css);
+@import url(../blocks/popup/__close-button/_type/popup__close-button_type_image.css);
+
 
 /* mixes */
 @import url(../blocks/faded-in/faded-in.css);
