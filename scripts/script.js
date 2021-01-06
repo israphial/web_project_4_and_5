@@ -1,12 +1,4 @@
-/* Reviewer: 
-  I've added one of my favorite libraries, the Mousetrap library. This gives the user another way to close the popups (via the esc key). It's a personal touch that I don't think will interfere with
-  the rest of the project in any way, and it improves usability. I tested it in a variety of ways to see if it would break anything, and I couldn't find any issues.
-  If you see a reason to remove it though, I can. 
-*/
-
-// TODO: 
-// -- Card data is not wiped from the cardsInformationArray when a card is deleted - should this be added in project 5? The effect that this causes is that 
-//    the default cards that have previously been deleted are re-drawn when generateCards() is called, as the data is still in the array. 
+// TODO:
 // -- Build in handling for broken links that don't lead to images - maybe have a validation occur that checks to see if this is an image link, and block the submission if it's not
 
 // data 
@@ -38,39 +30,39 @@ const cardsInformationArray = [
 ];
 
 // buttons and DOM elements
-let cardContainer = document.querySelector(".cards__container"); //is used by functions to add cards to the DOM
+const cardContainer = document.querySelector(".cards__container"); //is used by functions to add cards to the DOM
 
-let editProfileButton = document.querySelector('.profile__edit');
-let addCardButton = document.querySelector(".profile__add");
+const editProfileButton = document.querySelector('.profile__edit');
+const addCardButton = document.querySelector(".profile__add");
 
-let profileCloseButton = document.querySelector('.popup__close-button_type_profile'); 
-let addCardCloseButton = document.querySelector('.popup__close-button_type_add-card');
-let imageCloseButton = document.querySelector(".popup__close-button_type_image");
+const profileCloseButton = document.querySelector('.popup__close-button_type_profile'); 
+const addCardCloseButton = document.querySelector('.popup__close-button_type_add-card');
+const imageCloseButton = document.querySelector(".popup__close-button_type_image");
 
-let profileSaveButton = document.querySelector('.edit-form__save-button');
-let addCardSaveButton = document.querySelector('edit-form__save-button_type_add-card');
+const profileSaveButton = document.querySelector('.edit-form__save-button');
+const addCardSaveButton = document.querySelector('edit-form__save-button_type_add-card');
 
-let profilePopup = document.querySelector('.popup_type_profile'); // popup for profile
-let addCardPopup = document.querySelector(".popup_type_add-card"); // popup for add-card
-let imagePopup = document.querySelector(".popup_type_image"); // popup for images
+const profilePopup = document.querySelector('.popup_type_profile'); // popup for profile
+const addCardPopup = document.querySelector(".popup_type_add-card"); // popup for add-card
+const imagePopup = document.querySelector(".popup_type_image"); // popup for images
 
-let profilePopupForm = document.querySelector('.edit-form_type_profile');
-let addCardPopupForm = document.querySelector('.popup_type_add-card');
+const profilePopupForm = document.querySelector('.edit-form_type_profile');
+const addCardPopupForm = document.querySelector('.edit-form_type_add-card');
 
 
 // The parts that show up in profile popup
-let profileHeaderContents = document.querySelector('.profile__header');
-let profileDescriptionContents = document.querySelector('.profile__description');
+const profileHeaderContents = document.querySelector('.profile__header');
+const profileDescriptionContents = document.querySelector('.profile__description');
 
 // The input boxes of the popup form - these are made to match the contents of the profile when the form is opened
-let inputHeaderContents = document.querySelector('.edit-form__input_type_header');
-let inputDescriptionContents = document.querySelector('.edit-form__input_type_description');
+const inputHeaderContents = document.querySelector('.edit-form__input_type_header');
+const inputDescriptionContents = document.querySelector('.edit-form__input_type_description');
 
 // parts for image popup
 
 // image popup elements
-let imagePopupImage = document.querySelector('.popup__image');
-let imagePopupCaption = document.querySelector('.popup__image-caption');
+const imagePopupImage = document.querySelector('.popup__image');
+const imagePopupCaption = document.querySelector('.popup__image-caption');
 
 // functions 
 
