@@ -71,8 +71,6 @@ function openPopup(popup, imageSource=undefined) {
     closePopupUnsaved(popup);
   })
     popup.classList.add("popup_visible");
-    popup.classList.remove("faded-out");
-    popup.classList.add("faded-in");
 
     if (popup == profilePopup) {
       inputHeaderContents.value = profileHeaderContents.textContent;
@@ -90,14 +88,20 @@ function openPopup(popup, imageSource=undefined) {
     }
 };
 
-function closePopupUnsaved(popup) {
+function closePopup(popup) {
   Mousetrap.reset(); // unbinds esc key
   popup.classList.remove("popup_visible");
-  popup.classList.remove("faded-in");
-  popup.classList.add("faded-out");
 };
 
-function closePopupSaved(e, popup) {
+function handleProfileSubmit(e) {
+
+}
+
+function handleAddCardSubmit(e) {
+
+}
+
+function closePopupSaved(e, popup) { /*deprecate this*/
     e.preventDefault(); // This stops the page from reloading on form submission
 
     if (popup == profilePopup) {
@@ -119,15 +123,13 @@ function closePopupSaved(e, popup) {
       generateCards();
     }
     popup.classList.remove("popup_visible");
-    popup.classList.remove("faded-in");
-    popup.classList.add("faded-out");
 };
 
 
 
 
 function generateCards() {
-
+ 
     // erase existing cards so that all can be redrawn and re-assigned their event listeners
     let currentCards = cardContainer.querySelectorAll(".card");
     currentCards.forEach((element) => {

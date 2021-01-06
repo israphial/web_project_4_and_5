@@ -1,4 +1,4 @@
-/* blocks */
+/* Blocks */
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts/fonts.css);
 @import url(../blocks/page/page.css);
@@ -14,14 +14,11 @@
 @import url(../blocks/popup-container/popup-container.css);
 
 
-/* modifiers */
+/* Modifiers */
 @import url(../blocks/popup/_visible/popup_visible.css);
 @import url(../blocks/card/__social-symbol/_liked/card__social-symbol_liked.css);
 @import url(../blocks/popup/__close-button/_type/popup__close-button_type_profile.css);
 @import url(../blocks/popup/__close-button/_type/popup__close-button_type_add-card.css);
 @import url(../blocks/popup/__close-button/_type/popup__close-button_type_image.css);
 
-
-/* mixes */
-@import url(../blocks/faded-in/faded-in.css);
-@import url(../blocks/faded-out/faded-out.css);
+/* Mixes */
