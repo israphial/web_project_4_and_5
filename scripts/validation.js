@@ -1,87 +1,10 @@
 
+/*
 
+TODO:
+ -BUG: makePopupBackgroundClickable closes the popup when ANY of the popup is clicked, not just the overlay
 
-
-// const showInputError = (formElement, inputElement, errorMessage) => { // takes the errorElement (span) and adds the error message to its textContent
-//     const errorElement = formElement.querySelector(`#${inputElement.id}-error`)
-  
-//     inputElement.classList.add("edit-form__input_type_error"); // makes the input's underline red
-//     errorElement.classList.add("edit-form__error_active");
-//     errorElement.textContent = errorMessage;
-  
-//   }
-  
-//   const hideInputError = (formElement, inputElement) => { // takes the errorElement and removes the error message from its textContent
-//     // get the input error element
-//     const errorElement = formElement.querySelector(`#${inputElement.id}-error`)
-  
-//     errorElement.classList.remove("edit-form__error_active");
-//     errorElement.textContent = "";
-//     inputElement.classList.remove("edit-form__input_type_error"); // removes the input's red underline
-//     // re-enable the save button too, using toggleButtonState()
-//   }
-  
-//   const hasInvalidInput = (inputElementList) => {
-//     // receives input list and iterates over it, checking if all of the inputs are valid, and returns true if a field is not valid
-//     return inputElementList.some((inputElement) => {
-//       return !inputElement.validity.valid; // is the field currently valid?
-//     })
-//   }
-  
-//   const isValid = (formElement, inputElement) => { // this function checks for form element validity and is ran every time an input is fired
-//     if (!inputElement.validity.valid) {
-//       showInputError(formElement, inputElement, inputElement.validationMessage);
-  
-//     } else {
-//       hideInputError(formElement, inputElement);
-//     }
-//   }
-  
-//   const toggleButtonState = (inputElementList, buttonElement) => { // controls the state of the button depending on the validity of the inputs
-//     if (hasInvalidInput(inputElementList)) {
-//       buttonElement.disabled = true;
-//       buttonElement.classList.add("edit-form__save-button_disabled");
-//     } else {
-//       buttonElement.disabled = false;
-//       buttonElement.classList.remove("edit-form__save-button_disabled");
-  
-//     }
-//   }
-  
-//   const setEventListeners = (formElement) => {
-  
-//     // find all input fields, make an array out of them, add event listeners to each
-//     const inputElementList = Array.from(formElement.querySelectorAll(".edit-form__input")); // get all of the form fields of this form
-//     const buttonElement = formElement.querySelector(".edit-form__save-button"); // get the submit button of this form
-  
-//     // set event listeners to all input elements in list
-//     inputElementList.forEach((inputElement) => {
-//       inputElement.addEventListener("input", () => {
-//         isValid(formElement, inputElement);
-//         toggleButtonState(inputElementList, buttonElement); // THIS MIGHT NOT BE IN THE RIGHT SPOT!!!
-//       });
-//     });
-//   };
-  
-//   const enableValidation = (settings) => { // this function finds all forms, then enables validation for each form it finds
-     
-//     const formList = Array.from(document.querySelectorAll(".edit-form__form")); // get all forms on page
-//     // iterate over these forms, adding validation to each of them and disabling certain behaviors
-//     formList.forEach((formElement) => {
-//       formElement.addEventListener("submit", (evt) => {
-//         evt.preventDefault(); // cancel default submission behavior of each form
-//       });
-//       setEventListeners(formElement); // send a form into setEventListeners
-//     })
-//   }
-  
-//   enableValidation(settingsObject);
-
-// refactor with settings object
-// --------------------------------------
-
-
-
+ */
 
 const settingsObject = {
     formSelector: ".edit-form", // the form itself
@@ -91,7 +14,6 @@ const settingsObject = {
     inputErrorClass: "edit-form__input_type_error", // this class is applied to the input when there's an input error / the input is invalid
     errorClass: "edit-form__error_active" // the span that "pops up" during an error state
 };
-
 
 
 
@@ -178,13 +100,15 @@ const hasInvalidInput = (inputElementList) => {
 
 const makePopupBackgroundClickable = (currentForm, settings) => {
     console.log(`makePopupBackgroundClickable running`)
-    // make this form's background div clickable + make it trigger closePopupUnsaved
-    const popupBackgrounds = Array.from(document.querySelectorAll("popup"));
+    // make this form's background div clickable + make it trigger closePopup
+    const popupBackgrounds = Array.from(document.querySelectorAll(".popup"));
 
     
     popupBackgrounds.forEach((thisPopupBackground) => {
-        thisPopupBackground.addEventListener("click", closePopup);
-        console.log(`loop forEach ran`)
+        console.log(thisPopupBackground)
+        thisPopupBackground.addEventListener("click", function () {
+            closePopup(thisPopupBackground)
+        });
     })
 }
 
