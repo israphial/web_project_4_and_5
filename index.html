@@ -42,9 +42,11 @@
             <div class="edit-form edit-form_type_profile">
                 <button type="button" class="popup__close-button popup__close-button_type_profile" aria-label="Close popup"></button>
                 <h2 class="edit-form__header edit-form__header_type_profile">Edit profile</h2>
-                <form name="profile-form" action="#" class="edit-form__form edit-form__form_type_profile">
-                    <input type="text" class="edit-form__input edit-form__input_type_header" name="profileName" value="" maxlength="250" required>
-                    <input type="text" class="edit-form__input edit-form__input_type_description" name="profileDescription" value="" maxlength="250" required>
+                <form name="profile-form" action="#" class="edit-form__form edit-form__form_type_profile" novalidate>
+                    <input type="text" id="edit-form__input_type_header" class="edit-form__input edit-form__input_type_header" name="profileName" value="" minlength="2" maxlength="40" required>
+                    <span id="edit-form__input_type_header-error" class="edit-form__error">Hello world! test text test text test text testtttttttttttt</span>
+                    <input type="text" id="edit-form__input_type_description" class="edit-form__input edit-form__input_type_description" name="profileDescription" value="" minlength="2" maxlength="200" required>
+                    <span id="edit-form__input_type_description-error" class="edit-form__error"></span>
                     <button class="edit-form__save-button edit-form__save-button_type_profile" type="submit" aria-label="Save changes">Save</button>
                 </form>
             </div>
@@ -54,18 +56,16 @@
             <div class="edit-form edit-form_type_add-card">
                 <button type="button" class="popup__close-button popup__close-button_type_add-card" aria-label="Close popup"></button>
                 <h2 class="edit-form__header edit-form__header_type_add-card">New Place</h2>
-                <form name="add-card-form" action="#" class="edit-form__form edit-form__form_type_add-card">
-                    <input type="text" class="edit-form__input edit-form__input_type_title" name="cardTitle" value="" placeholder="Title" maxlength="50" required>
-                    <input type="url" class="edit-form__input edit-form__input_type_url" name="cardURL" value="" placeholder="Image URL" required>
+                <form name="add-card-form" action="#" class="edit-form__form edit-form__form_type_add-card" novalidate>
+                    <input type="text" id="edit-form__input_type_title" class="edit-form__input edit-form__input_type_title" name="cardTitle" value="" placeholder="Title" minlength="1" maxlength="30" required>
+                    <span id="edit-form__input_type_title-error" class="edit-form__error"></span>
+                    <input type="url" id="edit-form__input_type_url" class="edit-form__input edit-form__input_type_url" name="cardURL" value="" placeholder="Image URL" required>
+                    <span id="edit-form__input_type_url-error" class="edit-form__error"></span>
                     <button class="edit-form__save-button edit-form__save-button_type_add-card" type="submit" aria-label="Save card">Create</button>
                 </form>
             </div>
         </div>
 
-        <!-- Reviewer: 
-            I'm having an issue with certain images that are really wide, such as the Yosemite picture, where it starts to stretch and distort
-            and I haven't found a good way to handle for such images. I've got things working for most other kinds of images but nothing I've tried 
-            has worked for that picture. I've spent about 2 hours on this alone with no good solutions, and I'd really appreciate any advice you have. -->
         <div class="popup popup_type_image">
             <div class="popup-container">
                 <figure class="image-popup-figure">
@@ -90,6 +90,7 @@
         
     </div>
 <script src="scripts/script.js" crossorigin="anonymous"></script>
+<script src="scripts/validation.js"></script>
 <script src="scripts/mousetrap.js" defer></script>
 </body>
 </html>

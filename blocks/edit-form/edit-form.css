@@ -1,6 +1,7 @@
 @import url(__save-button/edit-form__save-button.css);
 @import url(__header/edit-form__header.css);
 @import url(__input/edit-form__input.css);
+@import url(__error/edit-form__error.css);
 
 .edit-form {
     position: relative;

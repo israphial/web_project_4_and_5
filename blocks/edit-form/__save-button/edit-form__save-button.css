@@ -11,6 +11,7 @@
     cursor: pointer;
     font-size: 18px;
     line-height: 22px;
+    border-radius: 2px;
 }
 
 .edit-form__save-button:hover {

@@ -171,3 +171,5 @@ imageCloseButton.addEventListener("click", function() {
 
 
 renderInitialCards();
+
+
