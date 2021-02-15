@@ -28,7 +28,7 @@ const enableValidation = (settings) => {
         setEventListeners(formElement, settings); // send the current form and the settings to this to attach all necessary listeners
         // make each background clickable
         makePopupBackgroundClickable(formElement, settings);
-        console.log(`enableValidation completed`)
+        bindEscapeKey(formElement);
     })
 }
 
@@ -47,6 +47,7 @@ const setEventListeners = (formElement, settings) => {
             toggleButtonState(inputElementList, buttonElement, settings); // send all inputs of this form and the button to set the button to its appropriate state
         })
     })
+    
 }
 
 const isValid = (formElement, inputElement, settings) => { // checks the validity of the input that triggered an input event, in the "current form"
@@ -99,21 +100,24 @@ const hasInvalidInput = (inputElementList) => {
 }
 
 const makePopupBackgroundClickable = (currentForm, settings) => {
-    console.log(`makePopupBackgroundClickable running`)
     // make this form's background div clickable + make it trigger closePopup
     const popupBackgrounds = Array.from(document.querySelectorAll(".popup"));
 
     
     popupBackgrounds.forEach((thisPopupBackground) => {
-        console.log(thisPopupBackground)
         thisPopupBackground.addEventListener("click", function () {
-            closePopup(thisPopupBackground)
+            closePopup(thisPopupBackground);
         });
-    })
+    });
 }
 
-const bindEscapeKey = (currentForm, settings) => {
-    // this will bind esc to closing the popup that's open
+const bindEscapeKey = (currentForm) => {    // this function binds esc so that it closes whatever popup is currently open
+console.log(currentForm);
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") { // issue: this is receiving the FORM, not the popup! It needs to receive the popup in order to remove the visible class
+            closePopup(currentForm);
+        };
+    });
 }
 
 
