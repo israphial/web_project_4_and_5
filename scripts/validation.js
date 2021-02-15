@@ -2,8 +2,8 @@
 /*
 
 TODO:
- -BUG: makePopupBackgroundClickable closes the popup when ANY of the popup is clicked, not just the overlay
-
+ -BUG: makePopupBackgroundClickable closes the popup when ANY part of the popup is clicked, not just the overlay
+ -BUG/ISSUE: bindEscapeKey is passing the wrong thing into closePopup(), it needs to be sending the current popup element, not the current form element
  */
 
 const settingsObject = {
