@@ -1,10 +1,4 @@
 
-/*
-
-TODO:
- -BUG: makePopupBackgroundClickable closes the popup when ANY part of the popup is clicked, not just the overlay
- -BUG/ISSUE: bindEscapeKey is passing the wrong thing into closePopup(), it needs to be sending the current popup element, not the current form element
- */
 
 const settingsObject = {
     formSelector: ".edit-form", // the form itself
@@ -26,9 +20,6 @@ const enableValidation = (settings) => {
             evt.preventDefault();
         })
         setEventListeners(formElement, settings); // send the current form and the settings to this to attach all necessary listeners
-        // make each background clickable
-        makePopupBackgroundClickable(formElement, settings);
-        bindEscapeKey(formElement);
     })
 }
 
@@ -41,6 +32,7 @@ const setEventListeners = (formElement, settings) => {
     const inputElementList = Array.from(formElement.querySelectorAll(settings.inputSelector)); // array: get all input elements of this form (formElement)
     const buttonElement = formElement.querySelector(settings.submitButtonSelector); // the submit button of this form
 
+    toggleButtonState(inputElementList, buttonElement, settings);
     inputElementList.forEach((inputElement) => {
         inputElement.addEventListener("input", () => {
             isValid(formElement, inputElement, settings); // send the current form and the input element that triggered the event into a validity check, pass settings object in so that deeper functions have access to it
@@ -98,28 +90,6 @@ const hasInvalidInput = (inputElementList) => {
         return !inputElement.validity.valid; // is this field currently valid? 
     })
 }
-
-const makePopupBackgroundClickable = (currentForm, settings) => {
-    // make this form's background div clickable + make it trigger closePopup
-    const popupBackgrounds = Array.from(document.querySelectorAll(".popup"));
-
-    
-    popupBackgrounds.forEach((thisPopupBackground) => {
-        thisPopupBackground.addEventListener("click", function () {
-            closePopup(thisPopupBackground);
-        });
-    });
-}
-
-const bindEscapeKey = (currentForm) => {    // this function binds esc so that it closes whatever popup is currently open
-console.log(currentForm);
-    document.addEventListener("keydown", function(event) {
-        if (event.key === "Escape") { // issue: this is receiving the FORM, not the popup! It needs to receive the popup in order to remove the visible class
-            closePopup(currentForm);
-        };
-    });
-}
-
 
 
 enableValidation(settingsObject);
