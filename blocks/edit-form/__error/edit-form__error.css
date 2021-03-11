@@ -1,0 +1,13 @@
+.edit-form__error {
+    display: none;
+    color: #FF0000;
+    margin-left: 35px;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+@media screen and (max-width: 450px) {
+    .edit-form__error {
+        margin-left: 21px;
+    }
+}

@@ -1,5 +1,4 @@
 // TODO:
-// -- Build in handling for broken links that don't lead to images - maybe have a validation occur that checks to see if this is an image link, and block the submission if it's not
 
 // data 
 const cardsInformationArray = [
@@ -72,11 +71,13 @@ const cardTemplate = document.querySelector("#card-template").content;
 
 // functions 
 function openPopup(popup) {
-    popup.classList.add("popup_visible");
+  popup.classList.add("popup_visible");
+  bindEscapeKey();
 };
 
 function closePopup(popup) {
   popup.classList.remove("popup_visible");
+  unbindEscapeKey();
 };
 
 function openProfilePopup() {
@@ -90,6 +91,33 @@ function openImagePopup(cardData) {
   imagePopupImage.src = cardData.link;
   imagePopupCaption.textContent = cardData.name;
   openPopup(imagePopup);
+}
+
+const bindEscapeKey = () => {    // this function binds esc so that it closes whatever popup is currently open
+  document.addEventListener("keydown", handleEscKeyPress);
+}
+
+const unbindEscapeKey = () => {
+  document.removeEventListener("keydown", handleEscKeyPress); //this works
+}
+
+const handleEscKeyPress = (evt) => {
+  if (evt.key === "Escape") {
+    const currentlyOpenedPopup = document.querySelector(".popup_visible"); // select whatever popup is open
+    closePopup(currentlyOpenedPopup);
+  }
+}
+
+const makePopupBackgroundClickable = () => {
+  const popupBackgrounds = Array.from(document.querySelectorAll(".popup"));
+
+  popupBackgrounds.forEach((thisPopupBackground) => {
+    thisPopupBackground.addEventListener("click", function (evt) {
+      if (evt.target.classList.contains("popup")) { // only close the popup if the background is clicked
+        closePopup(thisPopupBackground);
+      }
+    });
+  });
 }
 
 function createCard(item) {
@@ -170,4 +198,9 @@ imageCloseButton.addEventListener("click", function() {
 });
 
 
+// initializations
+
 renderInitialCards();
+makePopupBackgroundClickable();
+
+
