@@ -10,8 +10,6 @@ const settingsObject = {
 };
 
 
-
-
 const enableValidation = (settings) => {
     const formList = Array.from(document.querySelectorAll(settings.formSelector)); // set all forms on the page
 
@@ -22,7 +20,6 @@ const enableValidation = (settings) => {
         setEventListeners(formElement, settings); // send the current form and the settings to this to attach all necessary listeners
     })
 }
-
 
 // setEventListeners attaches event listeners to all input elements, that trigger during input events. On each input, 
 // the isValid function runs, checking to see if the field is "valid" or not. Depending on the validity of the fields, 
