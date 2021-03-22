@@ -1,4 +1,4 @@
-import { openPopup, closePopup } from "./sharedFunctions.js";
+import { openPopup, closePopup } from "./SharedFunctions.js";
 
 export class Card {
     constructor(text, link, cardSelector) {

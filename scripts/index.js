@@ -1,5 +1,6 @@
 // imports
 import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
 import { openPopup, closePopup } from "./SharedFunctions.js";
 
 // data 
@@ -29,6 +30,16 @@ const cardsInformationArray = [
       link: "https://code.s3.yandex.net/web-code/lago.jpg"
     }
 ];
+
+
+const settingsObject = {
+  formSelector: ".edit-form", // the form itself
+  inputSelector: ".edit-form__input", // the inputs within "this" form
+  submitButtonSelector: ".edit-form__save-button", // the button within "this" form
+  inactiveButtonClass: "edit-form__save-button_disabled", // the disabled class for "this" button
+  inputErrorClass: "edit-form__input_type_error", // this class is applied to the input when there's an input error / the input is invalid
+  errorClass: "edit-form__error_active" // the span that "pops up" during an error state
+};
 
 // buttons and DOM elements
 const cardContainer = document.querySelector(".cards__container"); //is used by functions to add cards to the DOM
@@ -134,6 +145,10 @@ function handleAddCardSubmit(e) { // redo this to handle new Card class objects
   cardContainer.prepend(finishedCard);
   closePopup(addCardPopup);
   addCardPopupForm.reset();
+}
+
+const validateForms = () => {
+  
 }
 
 

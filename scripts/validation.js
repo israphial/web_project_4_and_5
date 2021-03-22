@@ -1,14 +1,5 @@
 
 
-const settingsObject = {
-    formSelector: ".edit-form", // the form itself
-    inputSelector: ".edit-form__input", // the inputs within "this" form
-    submitButtonSelector: ".edit-form__save-button", // the button within "this" form
-    inactiveButtonClass: "edit-form__save-button_disabled", // the disabled class for "this" button
-    inputErrorClass: "edit-form__input_type_error", // this class is applied to the input when there's an input error / the input is invalid
-    errorClass: "edit-form__error_active" // the span that "pops up" during an error state
-};
-
 
 const enableValidation = (settings) => {
     const formList = Array.from(document.querySelectorAll(settings.formSelector)); // set all forms on the page
