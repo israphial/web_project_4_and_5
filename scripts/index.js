@@ -1,4 +1,6 @@
-// TODO:
+// imports
+import { Card } from "./Card.js";
+import { openPopup, closePopup } from "./SharedFunctions.js";
 
 // data 
 const cardsInformationArray = [
@@ -70,43 +72,22 @@ const cardTemplate = document.querySelector("#card-template").content;
 
 
 // functions 
-function openPopup(popup) {
-  popup.classList.add("popup_visible");
-  bindEscapeKey();
-};
 
-function closePopup(popup) {
-  popup.classList.remove("popup_visible");
-  unbindEscapeKey();
-};
 
-function openProfilePopup() {
+function openProfilePopup() { // does this go to sharedFuncs? or stay here?
   inputHeaderContents.value = profileHeaderContents.textContent;
   inputDescriptionContents.value = profileDescriptionContents.textContent;
   openPopup(profilePopup);
 }
 
-function openImagePopup(cardData) {
+function openImagePopup(cardData) { // does this go to sharedFuncs? or stay here?
   // generate each part of the popup using the parts of cardData
   imagePopupImage.src = cardData.link;
   imagePopupCaption.textContent = cardData.name;
   openPopup(imagePopup);
 }
 
-const bindEscapeKey = () => {    // this function binds esc so that it closes whatever popup is currently open
-  document.addEventListener("keydown", handleEscKeyPress);
-}
 
-const unbindEscapeKey = () => {
-  document.removeEventListener("keydown", handleEscKeyPress); //this works
-}
-
-const handleEscKeyPress = (evt) => {
-  if (evt.key === "Escape") {
-    const currentlyOpenedPopup = document.querySelector(".popup_visible"); // select whatever popup is open
-    closePopup(currentlyOpenedPopup);
-  }
-}
 
 const makePopupBackgroundClickable = () => {
   const popupBackgrounds = Array.from(document.querySelectorAll(".popup"));
@@ -120,36 +101,14 @@ const makePopupBackgroundClickable = () => {
   });
 }
 
-function createCard(item) {
 
-  const currentCard = cardTemplate.cloneNode(true); // clone card template into this to "build" a card with
-  const cardImage = currentCard.querySelector(".card__picture");
-  cardImage.src = item.link;
-  cardImage.alt = item.name;
-  currentCard.querySelector(".card__name").textContent = item.name;
-
-
-  // add event listeners to the various parts of the newly created card
-  cardImage.addEventListener("click", function() {
-    openImagePopup(item);
-  });
-  const deleteCardButton = currentCard.querySelector(".card__delete-button");
-  deleteCardButton.addEventListener("click", function(evt) {
-    evt.target.parentElement.remove(); //removes the card when delete button is clicked
-  });
-  const likeCardButton = currentCard.querySelector(".card__social-symbol");
-  likeCardButton.addEventListener("click", function(evt) {
-    evt.target.classList.toggle("card__social-symbol_liked");
-  });
-  return currentCard; // returns a fully ready card
-}
-
-function renderInitialCards() {
+function loadInitialCards() { // replaces renderInitialCards functionally
   cardsInformationArray.forEach((item) => {
-    const card = createCard(item);
-    cardContainer.append(card);
-  });
-};
+    const card = new Card(item.name, item.link, cardTemplate);
+    const finishedCardElement = card.createCard();
+    cardContainer.append(finishedCardElement); // add finished card to DOM
+  })
+}
 
 function handleProfileSubmit(e) {
   e.preventDefault(); //stops page from reloading
@@ -160,7 +119,7 @@ function handleProfileSubmit(e) {
   closePopup(profilePopup);
 }
 
-function handleAddCardSubmit(e) {
+function handleAddCardSubmit(e) { // redo this to handle new Card class objects
   e.preventDefault(); // stops page from reloading
 
   const newCardTitle = cardTitleSubmitted.value;
@@ -169,8 +128,10 @@ function handleAddCardSubmit(e) {
     name: newCardTitle,
     link: newCardURL
   };
-  const card = createCard(newCardObject);
-  cardContainer.prepend(card);
+
+  const card = new Card(newCardTitle, newCardURL, cardTemplate);
+  const finishedCard = card.createCard();
+  cardContainer.prepend(finishedCard);
   closePopup(addCardPopup);
   addCardPopupForm.reset();
 }
@@ -200,7 +161,9 @@ imageCloseButton.addEventListener("click", function() {
 
 // initializations
 
-renderInitialCards();
+// renderInitialCards();
+loadInitialCards();
 makePopupBackgroundClickable();
+
 
 
