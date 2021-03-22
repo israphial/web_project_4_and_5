@@ -1,4 +1,8 @@
-// openPopup and closePopup will go here, I think
+// constants
+export const imagePopup = document.querySelector(".popup_type_image");
+export const imagePopupImage = document.querySelector(".popup__image");
+export const imagePopupCaption = document.querySelector(".popup__image-caption");
+
 
 // functions 
 export function openPopup(popup) { // will be moved to sharedFunctions.js

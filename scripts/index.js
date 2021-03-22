@@ -1,7 +1,7 @@
 // imports
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
-import { openPopup, closePopup } from "./SharedFunctions.js";
+import { openPopup, closePopup } from "./sharedFunctions.js";
 
 // data 
 const cardsInformationArray = [
@@ -117,11 +117,18 @@ function handleProfileSubmit(e) {
   closePopup(profilePopup);
 }
 
+function createCard(cardName, cardLink, cardTemplate) {
+  const card = new Card(cardName, cardLink, cardTemplate);
+  const finishedCard = card.createCard();
+  return finishedCard;
+}
+
 function loadInitialCards() { 
   cardsInformationArray.forEach((item) => {
-    const card = new Card(item.name, item.link, cardTemplate);
-    const finishedCardElement = card.createCard();
-    cardContainer.append(finishedCardElement); 
+    // const card = new Card(item.name, item.link, cardTemplate);
+    const card = createCard(item.name, item.link, cardTemplate)
+    // const finishedCardElement = card.createCard();
+    cardContainer.append(card); 
   })
 }
 
@@ -135,9 +142,10 @@ function handleAddCardSubmit(e) {
     link: newCardURL
   };
 
-  const card = new Card(newCardTitle, newCardURL, cardTemplate);
-  const finishedCard = card.createCard();
-  cardContainer.prepend(finishedCard);
+  // const card = new Card(newCardTitle, newCardURL, cardTemplate);
+  // const finishedCard = card.createCard();
+  const card = createCard(newCardTitle, newCardURL, cardTemplate)
+  cardContainer.prepend(card);
   closePopup(addCardPopup);
   addCardPopupForm.reset();
 }
