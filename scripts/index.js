@@ -1,4 +1,7 @@
-// TODO:
+// imports
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
+import { openPopup, closePopup } from "./SharedFunctions.js";
 
 // data 
 const cardsInformationArray = [
@@ -28,6 +31,16 @@ const cardsInformationArray = [
     }
 ];
 
+
+const settingsObject = {
+  formSelector: ".edit-form", // the form itself
+  inputSelector: ".edit-form__input", // the inputs within "this" form
+  submitButtonSelector: ".edit-form__save-button", // the button within "this" form
+  inactiveButtonClass: "edit-form__save-button_disabled", // the disabled class for "this" button
+  inputErrorClass: "edit-form__input_type_error", // this class is applied to the input when there's an input error / the input is invalid
+  errorClass: "edit-form__error_active" // the span that "pops up" during an error state
+};
+
 // buttons and DOM elements
 const cardContainer = document.querySelector(".cards__container"); //is used by functions to add cards to the DOM
 
@@ -47,7 +60,7 @@ const imagePopup = document.querySelector(".popup_type_image"); // popup for ima
 
 const profilePopupForm = document.querySelector('.edit-form_type_profile');
 const addCardPopupForm = document.querySelector('.edit-form__form_type_add-card');
-
+// const allForms = document.querySelectorAll(".edit-form");
 
 // The parts that show up in profile popup
 const profileHeaderContents = document.querySelector('.profile__header');
@@ -70,15 +83,6 @@ const cardTemplate = document.querySelector("#card-template").content;
 
 
 // functions 
-function openPopup(popup) {
-  popup.classList.add("popup_visible");
-  bindEscapeKey();
-};
-
-function closePopup(popup) {
-  popup.classList.remove("popup_visible");
-  unbindEscapeKey();
-};
 
 function openProfilePopup() {
   inputHeaderContents.value = profileHeaderContents.textContent;
@@ -87,25 +91,9 @@ function openProfilePopup() {
 }
 
 function openImagePopup(cardData) {
-  // generate each part of the popup using the parts of cardData
   imagePopupImage.src = cardData.link;
   imagePopupCaption.textContent = cardData.name;
   openPopup(imagePopup);
-}
-
-const bindEscapeKey = () => {    // this function binds esc so that it closes whatever popup is currently open
-  document.addEventListener("keydown", handleEscKeyPress);
-}
-
-const unbindEscapeKey = () => {
-  document.removeEventListener("keydown", handleEscKeyPress); //this works
-}
-
-const handleEscKeyPress = (evt) => {
-  if (evt.key === "Escape") {
-    const currentlyOpenedPopup = document.querySelector(".popup_visible"); // select whatever popup is open
-    closePopup(currentlyOpenedPopup);
-  }
 }
 
 const makePopupBackgroundClickable = () => {
@@ -113,43 +101,12 @@ const makePopupBackgroundClickable = () => {
 
   popupBackgrounds.forEach((thisPopupBackground) => {
     thisPopupBackground.addEventListener("click", function (evt) {
-      if (evt.target.classList.contains("popup")) { // only close the popup if the background is clicked
+      if (evt.target.classList.contains("popup")) { 
         closePopup(thisPopupBackground);
       }
     });
   });
 }
-
-function createCard(item) {
-
-  const currentCard = cardTemplate.cloneNode(true); // clone card template into this to "build" a card with
-  const cardImage = currentCard.querySelector(".card__picture");
-  cardImage.src = item.link;
-  cardImage.alt = item.name;
-  currentCard.querySelector(".card__name").textContent = item.name;
-
-
-  // add event listeners to the various parts of the newly created card
-  cardImage.addEventListener("click", function() {
-    openImagePopup(item);
-  });
-  const deleteCardButton = currentCard.querySelector(".card__delete-button");
-  deleteCardButton.addEventListener("click", function(evt) {
-    evt.target.parentElement.remove(); //removes the card when delete button is clicked
-  });
-  const likeCardButton = currentCard.querySelector(".card__social-symbol");
-  likeCardButton.addEventListener("click", function(evt) {
-    evt.target.classList.toggle("card__social-symbol_liked");
-  });
-  return currentCard; // returns a fully ready card
-}
-
-function renderInitialCards() {
-  cardsInformationArray.forEach((item) => {
-    const card = createCard(item);
-    cardContainer.append(card);
-  });
-};
 
 function handleProfileSubmit(e) {
   e.preventDefault(); //stops page from reloading
@@ -160,7 +117,15 @@ function handleProfileSubmit(e) {
   closePopup(profilePopup);
 }
 
-function handleAddCardSubmit(e) {
+function loadInitialCards() { 
+  cardsInformationArray.forEach((item) => {
+    const card = new Card(item.name, item.link, cardTemplate);
+    const finishedCardElement = card.createCard();
+    cardContainer.append(finishedCardElement); 
+  })
+}
+
+function handleAddCardSubmit(e) { 
   e.preventDefault(); // stops page from reloading
 
   const newCardTitle = cardTitleSubmitted.value;
@@ -169,10 +134,20 @@ function handleAddCardSubmit(e) {
     name: newCardTitle,
     link: newCardURL
   };
-  const card = createCard(newCardObject);
-  cardContainer.prepend(card);
+
+  const card = new Card(newCardTitle, newCardURL, cardTemplate);
+  const finishedCard = card.createCard();
+  cardContainer.prepend(finishedCard);
   closePopup(addCardPopup);
   addCardPopupForm.reset();
+}
+
+const validateForms = () => {
+  const formList = Array.from(document.querySelectorAll(settingsObject.formSelector));
+  formList.forEach((formElement) => {
+    const formToValidate = new FormValidator(settingsObject, formElement);
+    formToValidate.enableValidation();
+  });
 }
 
 
@@ -200,7 +175,9 @@ imageCloseButton.addEventListener("click", function() {
 
 // initializations
 
-renderInitialCards();
+loadInitialCards();
+validateForms();
 makePopupBackgroundClickable();
+
 
 
