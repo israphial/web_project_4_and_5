@@ -60,7 +60,7 @@ const imagePopup = document.querySelector(".popup_type_image"); // popup for ima
 
 const profilePopupForm = document.querySelector('.edit-form_type_profile');
 const addCardPopupForm = document.querySelector('.edit-form__form_type_add-card');
-
+// const allForms = document.querySelectorAll(".edit-form");
 
 // The parts that show up in profile popup
 const profileHeaderContents = document.querySelector('.profile__header');
@@ -84,41 +84,28 @@ const cardTemplate = document.querySelector("#card-template").content;
 
 // functions 
 
-
-function openProfilePopup() { // does this go to sharedFuncs? or stay here?
+function openProfilePopup() {
   inputHeaderContents.value = profileHeaderContents.textContent;
   inputDescriptionContents.value = profileDescriptionContents.textContent;
   openPopup(profilePopup);
 }
 
-function openImagePopup(cardData) { // does this go to sharedFuncs? or stay here?
-  // generate each part of the popup using the parts of cardData
+function openImagePopup(cardData) {
   imagePopupImage.src = cardData.link;
   imagePopupCaption.textContent = cardData.name;
   openPopup(imagePopup);
 }
-
-
 
 const makePopupBackgroundClickable = () => {
   const popupBackgrounds = Array.from(document.querySelectorAll(".popup"));
 
   popupBackgrounds.forEach((thisPopupBackground) => {
     thisPopupBackground.addEventListener("click", function (evt) {
-      if (evt.target.classList.contains("popup")) { // only close the popup if the background is clicked
+      if (evt.target.classList.contains("popup")) { 
         closePopup(thisPopupBackground);
       }
     });
   });
-}
-
-
-function loadInitialCards() { // replaces renderInitialCards functionally
-  cardsInformationArray.forEach((item) => {
-    const card = new Card(item.name, item.link, cardTemplate);
-    const finishedCardElement = card.createCard();
-    cardContainer.append(finishedCardElement); // add finished card to DOM
-  })
 }
 
 function handleProfileSubmit(e) {
@@ -130,7 +117,15 @@ function handleProfileSubmit(e) {
   closePopup(profilePopup);
 }
 
-function handleAddCardSubmit(e) { // redo this to handle new Card class objects
+function loadInitialCards() { 
+  cardsInformationArray.forEach((item) => {
+    const card = new Card(item.name, item.link, cardTemplate);
+    const finishedCardElement = card.createCard();
+    cardContainer.append(finishedCardElement); 
+  })
+}
+
+function handleAddCardSubmit(e) { 
   e.preventDefault(); // stops page from reloading
 
   const newCardTitle = cardTitleSubmitted.value;
@@ -148,7 +143,11 @@ function handleAddCardSubmit(e) { // redo this to handle new Card class objects
 }
 
 const validateForms = () => {
-  
+  const formList = Array.from(document.querySelectorAll(settingsObject.formSelector));
+  formList.forEach((formElement) => {
+    const formToValidate = new FormValidator(settingsObject, formElement);
+    formToValidate.enableValidation();
+  });
 }
 
 
@@ -176,8 +175,8 @@ imageCloseButton.addEventListener("click", function() {
 
 // initializations
 
-// renderInitialCards();
 loadInitialCards();
+validateForms();
 makePopupBackgroundClickable();
 
 
