@@ -1,4 +1,4 @@
-import { openPopup, closePopup } from "./SharedFunctions.js";
+import { openPopup, closePopup, imagePopup, imagePopupImage, imagePopupCaption } from "./sharedFunctions.js";
 
 export class Card {
     constructor(text, link, cardSelector) {
@@ -31,9 +31,6 @@ export class Card {
     // }
 
     _openImagePopup() {
-        const imagePopup = document.querySelector(".popup_type_image");
-        const imagePopupImage = document.querySelector(".popup__image");
-        const imagePopupCaption = document.querySelector(".popup__image-caption");
 
         imagePopupImage.src = this._cardLink;
         imagePopupCaption.textContent = this._cardText;
