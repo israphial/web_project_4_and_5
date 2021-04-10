@@ -1,18 +1,19 @@
-import { openPopup, closePopup, imagePopup, imagePopupImage, imagePopupCaption } from "./sharedFunctions.js";
+import { openPopup } from "../utils/SharedFunctions.js";
+import { imagePopupElement, imagePopupImage, imagePopupCaption } from "../utils/consts.js";
 
 export class Card {
-    constructor(text, link, cardSelector) {
+    constructor(text, link, cardSelector, handleCardClick) {
         this._cardText = text;
         this._cardLink = link;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     }
     
     // private methods
     //----------------
 
-    _getTemplate () {
-        const cardElement = this._cardSelector
-            .cloneNode(true);
+    _getTemplate() {
+        const cardElement = this._cardSelector.cloneNode(true);
         return cardElement; // finished blank card
     }
 
@@ -26,18 +27,12 @@ export class Card {
         e.target.parentElement.remove();
     }
 
-    // _handleBackgroundImageClick(e) { // not necessary?? 
-    //     // use openImagePopup(e) here after figuring out how to build in openImagePopup
-    // }
-
     _openImagePopup() {
 
         imagePopupImage.src = this._cardLink;
         imagePopupCaption.textContent = this._cardText;
-        openPopup(imagePopup);
+        openPopup(imagePopupElement);
     }
-
-
 
     _setEventListeners() {
         // will use arrow methods because they'll be using 'this'
@@ -47,7 +42,7 @@ export class Card {
 
         // assign listeners to these
         cardDeleteButton.addEventListener("click", (e) => {
-            this._handleDeleteButtonClick(e); // do i need to pass evt in here? assuming yes
+            this._handleDeleteButtonClick(e);
         })
         cardHeartIcon.addEventListener("click", (e) => {
             this._handleHeartClick(e);

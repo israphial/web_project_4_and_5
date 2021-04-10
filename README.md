@@ -18,10 +18,10 @@ Project 5 expands on Project 4 by adding far more interactivity on the page. Car
 
 * HTML/CSS for markup
 * Javascript for interactivity
-* Mousetrap JS Library for some hotkey functionality - credit to Craig Campbell for his great library!
 * Nested BEM for conventional structuring
-* Figma for the page design
 * Chrome DevTools for developing and debugging
+* Webpack and Babel for JS transpilation
+* NPM for library management
 * VSCode and MinGW64 CLI for developing
 * TinyPNG for image compression
 * Git/GitHub for version control
@@ -29,13 +29,9 @@ Project 5 expands on Project 4 by adding far more interactivity on the page. Car
 
 **Links**
 
-* [Link to the project spec sheet in Figma](https://www.figma.com/file/mUgu8OSHWE0M6p6vfwmdu9/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
-
-* [Link to the checklist](https://code.s3.yandex.net/web-developer/checklists/checklist-4-en/index.html)
-
 * [--Link to the hosted site--](https://israphial.github.io/web_project_4_and_5/index.html?)
 
 **NOTICE** 
 
 * Despite the Copyright symbol on the footer, this project is NOT licensed by me, and the copyright symbol is purely cosmetic, as per the project requirements. 
-* The Mousetrap JS Library is owned by Craig Campbell, all credit goes to him for his work. Apache 2.0 License notice can be found [HERE](https://github.com/ccampbell/mousetrap/blob/master/LICENSE).
+

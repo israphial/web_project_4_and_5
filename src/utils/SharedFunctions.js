@@ -5,12 +5,12 @@ export const imagePopupCaption = document.querySelector(".popup__image-caption")
 
 
 // functions 
-export function openPopup(popup) { // will be moved to sharedFunctions.js
+export function openPopup(popup) {
     popup.classList.add("popup_visible");
     bindEscapeKey();
 };
 
-export function closePopup(popup) { // will be moved to sharedFunctions.js
+export function closePopup(popup) {
     popup.classList.remove("popup_visible");
     unbindEscapeKey();
 };
