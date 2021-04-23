@@ -50,7 +50,7 @@ export class Card {
       // this user did not have this card liked, so this trigger is the user liking the card. return false to the index
       this._handleCardLike(false);
     }
-    e.target.classList.toggle("card__social-symbol_liked");
+    // e.target.classList.toggle("card__social-symbol_liked");
   }
 
   _setEventListeners() {
@@ -78,6 +78,7 @@ export class Card {
 
   updateCardLikes(newLikesArray) {
     this._likes = newLikesArray;
+    this._heartIcon.classList.toggle("card__social-symbol_liked"); // TODO TEST
     this._likesDisplay.textContent = newLikesArray.length;
   }
 

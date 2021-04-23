@@ -9,13 +9,9 @@ export default class Api {
       // fetching cards information, for example
       method: "GET",
       headers: this._headers, // headers ALWAYS needs to be set
-    })
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-      )
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then((res) =>
+      res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+    );
   }
 
   getAllCards() {
@@ -24,26 +20,22 @@ export default class Api {
     // this will be called in index.js in the initialization of the initialCards Section class, where you will replace the old cards array with the array that this method returns.
     return fetch(this._baseUrl + "/cards/", {
       headers: this._headers,
-    })
-      .then((res) =>
-        res.ok
-          ? res.json()
-          : Promise.reject(`Error: ${res.status} ${res.statusText}`)
-      ) // on resolve, returns an object of card objects
-      .catch((res) => console.log(res));
+    }).then((res) =>
+      res.ok
+        ? res.json()
+        : Promise.reject(`Error: ${res.status} ${res.statusText}`)
+    ); // on resolve, returns an object of card objects
   }
 
   getUserInfo() {
     // retrieves user info from server and returns it to index.js's init for profileInfo (new UserInfo).
     return fetch(this._baseUrl + "/users/me", {
       headers: this._headers,
-    })
-      .then((res) =>
-        res.ok
-          ? res.json()
-          : Promise.reject(`Error: ${res.status} ${res.statusText}`)
-      ) // send user info out into the callback to propagate user info
-      .catch((res) => console.log(res));
+    }).then((res) =>
+      res.ok
+        ? res.json()
+        : Promise.reject(`Error: ${res.status} ${res.statusText}`)
+    ); // send user info out into the callback to propagate user info
   }
 
   setUserInfo({ name, about }) {
@@ -56,13 +48,11 @@ export default class Api {
         name: name,
         about: about,
       }),
-    })
-      .then((res) =>
-        res.ok
-          ? res.json()
-          : Promise.reject(`Error: ${res.status} ${res.statusText}`)
-      )
-      .catch((res) => console.log(res));
+    }).then((res) =>
+      res.ok
+        ? res.json()
+        : Promise.reject(`Error: ${res.status} ${res.statusText}`)
+    );
   }
 
   addNewCard({ name, link }) {
@@ -74,11 +64,9 @@ export default class Api {
         name, // pulls the name from the decon'd object and passes it in to this object
         link, // ^ same with link
       }),
-    })
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject("Error, " + res.status)
-      )
-      .catch((error) => console.log(error));
+    }).then((res) =>
+      res.ok ? res.json() : Promise.reject("Error, " + res.status)
+    );
   }
 
   deleteCard(cardID) {
@@ -87,11 +75,9 @@ export default class Api {
       // add the cardID to the end of the url to specify which card to delete
       headers: this._headers,
       method: "DELETE",
-    })
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject("Error, " + res.status)
-      )
-      .catch((error) => console.log(error));
+    }).then((res) =>
+      res.ok ? res.json() : Promise.reject("Error, " + res.status)
+    );
   }
 
   addCardLike(cardID) {
@@ -99,11 +85,9 @@ export default class Api {
     return fetch(this._baseUrl + `/cards/likes/${cardID}`, {
       headers: this._headers,
       method: "PUT",
-    })
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject(`Error, ${res.status}`)
-      )
-      .catch((error) => console.log(error));
+    }).then((res) =>
+      res.ok ? res.json() : Promise.reject(`Error, ${res.status}`)
+    );
   }
 
   removeCardLike(cardID) {
@@ -111,11 +95,9 @@ export default class Api {
     return fetch(this._baseUrl + `/cards/likes/${cardID}`, {
       headers: this._headers,
       method: "DELETE",
-    })
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject(`Error, ${res.status}`)
-      )
-      .catch((error) => console.log(error));
+    }).then((res) =>
+      res.ok ? res.json() : Promise.reject(`Error, ${res.status}`)
+    );
   }
 
   updateAvatar(link) {
@@ -127,12 +109,8 @@ export default class Api {
       body: JSON.stringify({
         avatar: link.avatarURL,
       }),
-    })
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-      )
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then((res) =>
+      res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+    );
   }
 }

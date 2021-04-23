@@ -1,5 +1,3 @@
-import { profileAvatar } from "../utils/consts.js";
-
 export default class UserInfo {
   constructor(
     { currentUserName, currentUserOccupation, avatar, id },
@@ -33,6 +31,8 @@ export default class UserInfo {
     // Update the DOM
     this._profileHeaderContents.textContent = currentUserName;
     this._profileDescriptionContents.textContent = currentUserOccupation;
+    this._userName = currentUserName; // update the internal class information as well
+    this._userOccupation = currentUserOccupation;
   }
 
   setAvatar(avatarObject = false) {
