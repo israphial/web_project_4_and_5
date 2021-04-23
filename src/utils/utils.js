@@ -4,17 +4,6 @@ export const imagePopupImage = document.querySelector(".popup__image");
 export const imagePopupCaption = document.querySelector(".popup__image-caption");
 
 
-// functions 
-export function openPopup(popup) {
-    popup.classList.add("popup_visible");
-    bindEscapeKey();
-};
-
-export function closePopup(popup) {
-    popup.classList.remove("popup_visible");
-    unbindEscapeKey();
-};
-
 export const bindEscapeKey = () => {
     document.addEventListener("keydown", handleEscKeyPress);
   }

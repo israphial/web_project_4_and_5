@@ -3,6 +3,9 @@
 @import url(__name/card__name.css);
 @import url(__social-symbol/card__social-symbol.css);
 @import url(__delete-button/card__delete-button.css);
+@import url(__social-wrapper/card__social-wrapper.css);
+@import url(__like-count/card__like-count.css);
+
 
 .card {
     display: block;

@@ -16,13 +16,17 @@
         <main class="main">
 
         <section class="profile">
-            <img src="<%= require('./images/cousteau.jpg') %>" alt="Profile picture" class="profile__picture">
+            <div class="profile__avatar">
+                <img src="<%= require('./images/cousteau.jpg') %>" alt="Profile picture" class="profile__picture">
+                <button class="profile__edit-avatar-button"></button>
+            </div>
+            
             <div class="profile__descriptors">
                 <div class="profile__name-container">
-                    <h1 class="profile__header">Jacques Cousteau</h1>
+                    <h1 class="profile__header"></h1>
                     <button type="button" aria-label="Edit profile" class="profile__edit"></button>
                 </div>
-                <p class="profile__description">Explorer</p>
+                <p class="profile__description"></p>
             </div>
             <button class="profile__add" type="button" aria-label="Add card"></button>
         </section>
@@ -44,10 +48,10 @@
                 <h2 class="edit-form__header edit-form__header_type_profile">Edit profile</h2>
                 <form name="profile-form" action="#" class="edit-form__form edit-form__form_type_profile" novalidate>
                     <input type="text" id="edit-form__input_type_header" class="edit-form__input edit-form__input_type_header" name="profileName" value="" minlength="2" maxlength="40" required>
-                    <span id="edit-form__input_type_header-error" class="edit-form__error">Hello world! test text test text test text testtttttttttttt</span>
+                    <span id="edit-form__input_type_header-error" class="edit-form__error"></span>
                     <input type="text" id="edit-form__input_type_description" class="edit-form__input edit-form__input_type_description" name="profileDescription" value="" minlength="2" maxlength="200" required>
                     <span id="edit-form__input_type_description-error" class="edit-form__error"></span>
-                    <button class="edit-form__save-button edit-form__save-button_type_profile" type="submit" aria-label="Save changes">Save</button>
+                    <button class="edit-form__save-button edit-form__save-button_type_profile" type="submit" aria-label="Save changes" data-loading-state="Saving...">Save</button>
                 </form>
             </div>
         </div>
@@ -61,7 +65,7 @@
                     <span id="edit-form__input_type_title-error" class="edit-form__error"></span>
                     <input type="url" id="edit-form__input_type_url" class="edit-form__input edit-form__input_type_url" name="cardURL" value="" placeholder="Image URL" required>
                     <span id="edit-form__input_type_url-error" class="edit-form__error"></span>
-                    <button class="edit-form__save-button edit-form__save-button_type_add-card" type="submit" aria-label="Save card">Create</button>
+                    <button class="edit-form__save-button edit-form__save-button_type_add-card" type="submit" aria-label="Save card" data-loading-state="Saving...">Create</button>
                 </form>
             </div>
         </div>
@@ -74,7 +78,28 @@
                 </figure>
                 <button type="button" class="popup__close-button popup__close-button_type_image" aria-label="Close popup"></button>
             </div>
-            
+        </div>
+
+        <div class="popup popup_type_edit-avatar">
+            <div class="edit-form edit-form_type_edit-avatar">
+                <button class="popup__close-button popup__close-button_type_edit-avatar"></button>
+                <h2 class="edit-form__header edit-form__header_type_edit-avatar">Change profile picture</h2>
+                <form name="edit-avatar-form" action="#" class="edit-form__form edit-form__form_type_edit-avatar" novalidate>
+                    <input type="text" id="edit-form__input_type_avatar-url" class="edit-form__input edit-form__input_type_avatar-url" name="avatarURL" value="" placeholder="Link" minlength="4" required>
+                    <span id="edit-form__input_type_avatar-url-error" class="edit-form__error"></span>
+                    <button class="edit-form__save-button edit-form__save-button_type_edit-avatar" type="submit" aria-label="Save" data-loading-state="Saving...">Save</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="popup popup_type_delete-card">
+            <div class="edit-form edit-form_type_delete-card">
+                <button class="popup__close-button popup__close-button_type_delete-card"></button>
+                <h2 class="edit-form__header edit-form__header_type_delete-card">Are you sure?</h2>
+                <form name="delete-card-form" class="edit-form__form edit-form__form_type_delete-card" action="#" novalidate>
+                    <button class="edit-form__save-button edit-form__save-button_type_delete-card" data-loading-state="Saving...">Yes</button>
+                </form>
+            </div>
         </div>
         
         <template id="card-template">
@@ -83,7 +108,11 @@
                 <button type="button" class="card__delete-button" aria-label="Delete card"></button>
                 <div class="card__info">
                     <h2 class="card__name"></h2>
-                    <button class="card__social-symbol" type="button" aria-label="Like"></button>
+                    <div class="card__social-wrapper">
+                        <button class="card__social-symbol" type="button" aria-label="Like"></button>
+                        <span class="card__like-count">0</span>
+                    </div>
+
                 </div>
             </li>
         </template>

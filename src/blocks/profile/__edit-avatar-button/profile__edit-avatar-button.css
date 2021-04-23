@@ -1,0 +1,23 @@
+/* display: none by default and make it appear when hovered over */
+
+.profile__edit-avatar-button {
+    display: flex;
+    position: absolute;
+    border-radius: 50%;
+    overflow: hidden;
+    min-width: 120px;
+    height: 120px;
+    margin-right: 30px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    z-index: 2;
+}
+
+.profile__edit-avatar-button:hover {
+    background-color: rgba(0,0,0, 0.8);
+    background-image: url(../../../images/avatar-edit.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    visibility: visible;
+}

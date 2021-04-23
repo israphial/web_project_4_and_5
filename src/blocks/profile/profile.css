@@ -5,6 +5,8 @@
 @import url(__header/profile__header.css);
 @import url(__picture/profile__picture.css);
 @import url(__descriptors/profile__descriptors.css);
+@import url(__avatar/profile__avatar.css);
+@import url(__edit-avatar-button/profile__edit-avatar-button.css);
 
 .profile {
     display: flex;
