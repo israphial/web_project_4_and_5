@@ -30,7 +30,7 @@ const makeNewValidator = (formElement) => {
 const editProfileFormValidator = makeNewValidator(consts.profilePopupForm);
 const addCardFormValidator = makeNewValidator(consts.addCardPopupForm);
 const editAvatarFormValidator = makeNewValidator(consts.avatarPopupForm);
-const deleteCardFormValidator = makeNewValidator(consts.deleteCardPopupForm); // this allows access to the renderLoading method
+const deleteCardFormValidator = makeNewValidator(consts.deleteCardPopupForm);
 
 // init imagePopupClass:
 const imagePopupClass = new PopupWithImage(consts.imagePopupElement);
@@ -78,14 +78,14 @@ Promise.all([api.getUserInfo(), api.getAllCards()]).then((res) => {
     consts.profilePopupElement, // pass in profile popup element to be opened
     (profileObject) => {
       // callback 1 - do this when the form is submitted || the profileObject is returned by getUserInfo()
-      editProfileFormValidator.renderLoading(true);
+      editUserForm.renderLoading(true);
       api
         .setUserInfo({
           name: profileObject.profileName,
           about: profileObject.profileDescription,
         })
         .finally(() => {
-          editProfileFormValidator.renderLoading(false);
+          editUserForm.renderLoading(false);
           profileInfo.setUserInfo({
             currentUserName: profileObject.profileName,
             currentUserOccupation: profileObject.profileDescription,
@@ -107,9 +107,9 @@ Promise.all([api.getUserInfo(), api.getAllCards()]).then((res) => {
     consts.avatarPopupElement,
     (avatarObject) => {
       // cb 1 | when form is submitted, needs to get the input, post the input to server, and update the avatar image
-      editAvatarFormValidator.renderLoading(true);
+      editAvatarPopup.renderLoading(true);
       api.updateAvatar(avatarObject).finally(() => {
-        editAvatarFormValidator.renderLoading(false);
+        editAvatarPopup.renderLoading(false);
         profileInfo.setAvatar(avatarObject);
         editAvatarPopup.close();
       });
@@ -170,6 +170,12 @@ Promise.all([api.getUserInfo(), api.getAllCards()]).then((res) => {
     return finishedCard;
   }; // end const makeNewCard
 
+  const handleCardDelete = (cardID, card) => {
+    deleteCardPopup.open(cardID, card);
+  };
+
+  const currentUserId = profileInfo.returnUserID();
+
   // cards section
   const initialCards = new Section(
     {
@@ -191,7 +197,7 @@ Promise.all([api.getUserInfo(), api.getAllCards()]).then((res) => {
     consts.addCardPopupElement,
     (valuesPassedIn) => {
       // first callback | valuesPassedIn is an object that comes from the _getInputValues() return in PopupWithForm
-      addCardFormValidator.renderLoading(true);
+      addCardPopup.renderLoading(true);
       api
         .addNewCard({
           name: valuesPassedIn.cardTitle,
@@ -200,7 +206,7 @@ Promise.all([api.getUserInfo(), api.getAllCards()]).then((res) => {
         .then((res) => {
           const card = makeNewCard(res, consts.cardTemplate, handleCardClick);
           initialCards.addNewItem(card); // add it to the DOM
-          addCardFormValidator.renderLoading(false);
+          addCardPopup.renderLoading(false);
           addCardPopup.close();
         });
     },
@@ -224,9 +230,9 @@ Promise.all([api.getUserInfo(), api.getAllCards()]).then((res) => {
     consts.deleteCardPopupElement,
     (id, card) => {
       // cb | do this when delete button is clicked | values received by _handleSubmit in popupDeleteCard
-      deleteCardFormValidator.renderLoading(true);
+      deleteCardPopup.renderLoading(true);
       api.deleteCard(id).finally(() => {
-        deleteCardFormValidator.renderLoading(false);
+        deleteCardPopup.renderLoading(false);
         card.remove();
         deleteCardPopup.close();
       });
@@ -234,10 +240,4 @@ Promise.all([api.getUserInfo(), api.getAllCards()]).then((res) => {
   );
 
   deleteCardPopup.setEventListeners();
-
-  const handleCardDelete = (cardID, card) => {
-    deleteCardPopup.open(cardID, card);
-  };
-
-  const currentUserId = profileInfo.returnUserID();
 }); // end main Promise.all.then() call

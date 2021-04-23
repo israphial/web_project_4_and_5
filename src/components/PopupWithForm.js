@@ -40,4 +40,22 @@ export default class PopupWithForm extends Popup {
       this._formOpenCallback();
     }
   }
+
+  renderLoading(isLoading) {
+    // get current textContent of the current button:
+    const thisFormButton = this._form.querySelector(".edit-form__save-button");
+    const buttonText = thisFormButton.textContent;
+    // const swapContainer = originalButtonText;
+    const loadingButtonText = thisFormButton.getAttribute("data-loading-state");
+    if (isLoading) {
+      // btn needs loading text
+      thisFormButton.textContent = loadingButtonText; // make the content of the btn to loading...
+      thisFormButton.setAttribute("data-loading-state", buttonText); // swap the OG btn text into the data container
+    } else {
+      // btn needs base text, which should be stored in the data right now
+      const container = buttonText; // will have the loading... text in it
+      thisFormButton.textContent = loadingButtonText;
+      thisFormButton.setAttribute("data-loading-state", container);
+    }
+  }
 }
