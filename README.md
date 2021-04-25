@@ -2,36 +2,39 @@
 
 ### Overview
 
-* Introduction
-* Technologies
-* Links
+- Introduction
+- What's Next
+- Technologies
+- Links
 
 **Introduction**
 
-Project 4 mixes HTML/CSS responsive design principles and Javascript to create a webpage that allows the client to edit certain elements of the profile. This is done via a popup window triggered via the edit button.
-The Nested BEM methodology is used to organize the filestructure, as well as the various entities that make up the page. 
-Additionally, the version history of this project may be messy, as I am using this project to experiment with and learn about git branches, merges, merge conflict resolution, and various other git conventions. My intent is to build features in branches that get merged with the branch called "develop", and the develop branch will periodically be merged into master at "stable" points in the process (upon each major revision of the project). The conventions I will be following are to prefix all branches with a title, such as feature/featureName, fix/fixName, etc. I will also be using imperative language for commits. 
+Across The US is a series of projects done by me for Practicum by Yandex. The early iterations of this site build on markup principles, laying out the visuals for the site. The Nested BEM methodology are used to structure the CSS. Responsive Design practices are used to make the site easily usable on all common device resolutions. JS-based Live form validation is introduced early on, allowing us to make it as easy as possible for our users to customize their profiles and cards.
 
-Project 5 expands on Project 4 by adding far more interactivity on the page. Cards are now more malleable, allowing the user to add their own custom cards, as well as remove existing cards. There are a few more animations added to various elements of the page, new functionality for the "like" buttons on each card, and a new popup that expands the picture of a card when clicked. Most of these additions will be done primarily through JavaScript DOM manipulation. At the moment, changes are not saved between reloads, as a backend server or DB has not been attached to the site. 
+Starting at Project 5, the interactivity and capability of the site is expanded to do things like load the cards from an array of objects, allow user control via several interactive popups and elements, and personalize certain aspects of the page. As I moved further into the projects, I added things such as Prototypal Inheritance, Polymorphism of various popup classes, asynchronous API interaction, JS Modules, and various building/deployment tools.
+
+This site is intended to be fully interactive and seamless, such that the user doesn't need to jump between a bunch of different pages to interface with the site. All user operations are done through popups and interactive elements that immediately change the page without the need for refreshing or redirecting.
+
+**What's Next?**
+
+- React integration
+- Backend technology
 
 **Technologies**
 
-* HTML/CSS for markup
-* Javascript for interactivity
-* Nested BEM for conventional structuring
-* Chrome DevTools for developing and debugging
-* Webpack and Babel for JS transpilation
-* NPM for library management
-* VSCode and MinGW64 CLI for developing
-* TinyPNG for image compression
-* Git/GitHub for version control
-* GitHub Pages for hosting
+- HTML/CSS for markup
+- Javascript for interactivity
+- Nested BEM methodology for conventional file structuring
+- Webpack and Babel for JS transpilation
+- NPM for library/package management
+- VSCode MinGW64 CLI for developing
+- Git/GitHub for version control
+- GitHub Pages for hosting
 
 **Links**
 
-* [--Link to the hosted site--](https://israphial.github.io/web_project_4_and_5/index.html?)
+- [--Link to the hosted site--](https://israphial.github.io/web_project_4_and_5/)
 
-**NOTICE** 
+**NOTICE**
 
-* Despite the Copyright symbol on the footer, this project is NOT licensed by me, and the copyright symbol is purely cosmetic, as per the project requirements. 
-
+- Despite the Copyright symbol on the footer, this project is NOT licensed by me, and the copyright symbol is purely cosmetic, as per the project requirements.
