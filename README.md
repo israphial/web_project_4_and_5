@@ -1,6 +1,6 @@
 # Project 4 and 5: Around The U.S.
 
-<a href="https://israphial.github.io/web_project_4_and_5/">Click here to view the site!</a>
+<a href="https://israphial.github.io/web_project_4_and_5/">Click here to view the site!</a> PLEASE NOTE: Images uploaded to the site are uploaded by any individuals of the Practicum Coding Bootcamp, not me. The upload API is accessible to anyone in that program. 
 
 ### Overview
 
